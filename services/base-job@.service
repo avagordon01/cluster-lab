@@ -1,0 +1,8 @@
+[Container]
+Image=ghcr.io/avagordon01/farm:latest
+Network=host
+AutoUpdate=registry
+
+[Service]
+MemoryHigh=2G
+MemoryMax=4G

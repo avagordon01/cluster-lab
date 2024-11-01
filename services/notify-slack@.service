@@ -1,0 +1,9 @@
+[Unit]
+Description=send systemd service failure notifications to slack
+
+[Service]
+Type=oneshot
+ExecStart=notify-slack.sh -s %i
+
+[Install]
+WantedBy=multi-user.target

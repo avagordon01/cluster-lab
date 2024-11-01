@@ -1,0 +1,9 @@
+[Container]
+Image=ghcr.io/avagordon01/base:20241031
+Network=host
+AmbientCapabilities=CAP_SYS_ADMIN
+StandardOutput=append
+
+[Service]
+AllowedCPUs=0-3
+AllowedMemoryNodes=0

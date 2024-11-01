@@ -1,0 +1,11 @@
+[Unit]
+OnFailure=notify-slack@%i.service
+
+[Service]
+LimitCORE=infinity
+
+#MemoryMax=...
+#ManagedOOMMemoryPressure=kill
+#ManagedOOMMemoryPressureLimit=
+
+#ExtensionDirectories=/spare/local/pkg/lib
