@@ -4,7 +4,7 @@ RUN dnf -y install systemd podman python3 bzip2
 
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
-RUN groupadd -g 1000 admin && useradd -m -u 1000 -g admin admin
+RUN useradd -m -u 1000 -G wheel admin
 RUN echo "root:pass" | chpasswd
 RUN echo "admin:pass" | chpasswd
 USER admin
