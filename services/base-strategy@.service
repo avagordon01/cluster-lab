@@ -1,9 +1,10 @@
 [Container]
-Image=ghcr.io/avagordon01/base:20241031
+Image=ghcr.io/avagordon01/prod:20241031
 Network=host
 AmbientCapabilities=CAP_SYS_ADMIN
 StandardOutput=append
 
 [Service]
+Exec=/home/admin/build/strategy %i
 AllowedCPUs=0-3
 AllowedMemoryNodes=0

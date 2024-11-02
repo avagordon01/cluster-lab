@@ -2,4 +2,4 @@
 
 set -ex
 
-machinectl start control farm farm farm farm base base base base
+machinectl start control farm farm farm farm prod prod prod prod
