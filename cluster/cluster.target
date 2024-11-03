@@ -1,0 +1,11 @@
+[Unit]
+Wants=\
+    control@0.service \
+    farm@0.service \
+    farm@1.service \
+    farm@2.service \
+    farm@3.service \
+    prod@0.service \
+    prod@1.service \
+    prod@2.service \
+    prod@3.service

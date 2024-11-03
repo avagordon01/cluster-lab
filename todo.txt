@@ -1,4 +1,7 @@
-nspawn / machinectl spawn cluster
+add cockpit cluster config
+
+use less sudo for systemctl
+use less sudo for podman
 
 example c++/python binaries
 

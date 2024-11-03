@@ -17,11 +17,5 @@ for cf in containers/*.Containerfile; do
     #push to ghcr
     sudo podman push "${name}":latest ghcr.io/avagordon01/"${name}":latest
     sudo podman push "${name}":"${version}" ghcr.io/avagordon01/"${name}":"${version}"
-    #export to machinectl
-    sudo podman save -o "${name}".tar localhost/base:latest
-    sudo machinectl remove "${name}"
-    sudo importctl import-tar --force --class=machine "${name}".tar
-    rm -f "${name}".tar
 done
 sudo podman image list
-machinectl list-images

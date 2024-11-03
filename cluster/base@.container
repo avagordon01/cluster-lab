@@ -1,0 +1,4 @@
+[Container]
+Image="localhost/%j:latest"
+Network=host
+HostName="%j-%i"
