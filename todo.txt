@@ -1,4 +1,3 @@
-setup hostnames for easier ssh and config files
 setup keys for passwordless ssh all-to-all
 
 add cockpit cluster config

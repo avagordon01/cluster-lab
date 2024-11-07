@@ -1,6 +1,5 @@
 [Container]
 Image="localhost/%j:latest"
 HostName="%j-%i"
-Network=lab
-#Network=cluster.network
+Network=cluster.network
 NetworkAlias=%j

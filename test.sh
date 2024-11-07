@@ -2,5 +2,13 @@
 
 set -ex
 
-ip=$(sudo podman inspect -f "{{ .NetworkSettings.IPAddress }}" systemd-control_0)
+./stop.sh
+./install.sh
+./start.sh
+
+./podshell.sh
+exit
+
+ip=$(sudo podman inspect systemd-control_0 | jq --raw-output '.[0].NetworkSettings.Networks."systemd-cluster".IPAddress')
 firefox "${ip}:9090"
+exit
