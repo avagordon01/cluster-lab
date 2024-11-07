@@ -2,4 +2,4 @@
 
 set -ex
 
-sudo podman exec -it systemd-control_0 '/bin/bash' -c 'su admin'
+sudo podman exec -it --user admin systemd-control_0 '/bin/bash'

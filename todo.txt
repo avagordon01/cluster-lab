@@ -1,5 +1,3 @@
-setup keys for passwordless ssh all-to-all
-
 add cockpit cluster config
 
 use less sudo for systemctl

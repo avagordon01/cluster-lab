@@ -5,6 +5,7 @@ set -ex
 ./stop.sh
 ./install.sh
 ./start.sh
+./configure.sh
 
 ./podshell.sh
 exit

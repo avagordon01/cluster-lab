@@ -2,14 +2,6 @@
 
 set -ex
 
-sudo echo
-(
-echo "{"
-for name in systemd-control_0 systemd-{farm,prod}_{0,1,2,3}; do
-    ip=$(sudo podman inspect -f "{{ .NetworkSettings.IPAddress }}" "${name}")
-    echo "\"${name}\": {\"address\": \"${ip}\"},"
+for name in systemd-control_0 systemd-farm_{0,1,2,3} systemd-prod_{0,1,2,3}; do
+    sudo podman container cp --archive=false .ssh ${name}:/home/admin/.ssh
 done
-echo "}"
-) > cluster.json
-
-sudo podman container cp cluster.json systemd-control_0:/etc/cockpit/machines.d/
