@@ -1,6 +1,6 @@
 FROM rockylinux:9
 RUN dnf -y update
-RUN dnf -y install systemd sudo openssh-clients openssh-server podman python3 bzip2 cockpit cockpit-pcp cockpit-system
+RUN dnf -y install systemd sudo openssh-clients openssh-server podman podman-plugins python3 bzip2 cockpit cockpit-pcp cockpit-system
 
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
@@ -15,5 +15,10 @@ RUN curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bi
 COPY services/ .config/systemd/user
 COPY build/ build/
 USER root
-RUN systemctl enable sshd.service
+RUN systemctl disable auditd
+#pmcd
+RUN systemctl enable pmcd pmlogger
+EXPOSE 44321
+#sshd
+RUN systemctl enable sshd
 EXPOSE 22
