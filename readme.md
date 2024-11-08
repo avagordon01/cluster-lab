@@ -4,12 +4,7 @@ this is a repo for my testing system/cluster management using systemd for everyt
 
 first run `./build.sh` to build containers and `./install.sh` to install systemd services
 
-to start all machines and services:
-```
-sudo systemctl run cluster.target
-```
-
-open localhost:9090 to browse the cluster status, services, logs, etc
+run `./test.sh` to bring up the cluster, and open firefox with cockpit and dask dashboards
 
 submit python tasks to dask:
 ```

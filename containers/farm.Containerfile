@@ -2,8 +2,11 @@ FROM base:latest
 USER root
 #RUN dnf -y install ...
 RUN systemctl enable podman-auto-update.timer
-RUN source $HOME/.cargo/env && uv pip install --system dask jupyter systemd-coredump-python
+RUN source $HOME/.cargo/env && \
+    uv pip install --system \
+    dask distributed "bokeh!=3.0.*,>=2.4.2" \
+    jupyter jupyter-server-proxy systemd-coredump-python
 #dask
-#RUN systemctl enable --user dask-worker.service dask-scheduler.service
-#EXPOSE 8786 8787
+RUN systemctl enable dask-worker.service dask-scheduler.service
+EXPOSE 8786 8787
 CMD ["/sbin/init"]

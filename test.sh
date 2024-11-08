@@ -7,9 +7,13 @@ set -ex
 ./start.sh
 ./configure.sh
 
-./podshell.sh
-exit
+#dask
+farm_0_ip=$(sudo podman inspect systemd-farm_0 | jq --raw-output '.[0].NetworkSettings.Networks."systemd-cluster".IPAddress')
+firefox "${farm_0_ip}:8787"
 
-ip=$(sudo podman inspect systemd-control_0 | jq --raw-output '.[0].NetworkSettings.Networks."systemd-cluster".IPAddress')
-firefox "${ip}:9090"
+#cockpit
+control_ip=$(sudo podman inspect systemd-control_0 | jq --raw-output '.[0].NetworkSettings.Networks."systemd-cluster".IPAddress')
+firefox "${control_ip}:9090"
+
+./podshell.sh
 exit

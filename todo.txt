@@ -1,4 +1,6 @@
+enable metrics pmlogger.service
 add cockpit cluster config
+enable dask scheduler & workers services
 
 use less sudo for systemctl
 use less sudo for podman

@@ -1,0 +1,13 @@
+[Unit]
+Description=dask scheduler
+After=syslog.target network.target
+ConditionHost=farm-0
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=dask scheduler \
+    --pid-file=scheduler.pid
+ExecStop=/bin/kill `/bin/cat scheduler.pid`

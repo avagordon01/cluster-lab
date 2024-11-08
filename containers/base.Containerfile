@@ -12,7 +12,7 @@ WORKDIR /home/admin
 
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 RUN curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
-COPY services/ .config/systemd/user
+COPY services/ /etc/systemd/system/
 COPY build/ build/
 USER root
 RUN systemctl disable auditd

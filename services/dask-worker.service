@@ -1,0 +1,13 @@
+[Unit]
+Description=dask worker
+After=syslog.target network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=dask worker \
+    --pid-file=worker.pid \
+    tcp://farm-0:8786
+ExecStop=/bin/kill `/bin/cat worker.pid`
