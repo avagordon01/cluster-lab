@@ -4,7 +4,10 @@ Network=host
 AmbientCapabilities=CAP_SYS_ADMIN
 StandardOutput=append
 
+[Unit]
+ConditionHost=%j
+
 [Service]
-Exec=/home/admin/build/strategy %i
+ExecStart=/home/admin/build/strategy %i
 AllowedCPUs=0-3
 AllowedMemoryNodes=0
