@@ -16,6 +16,11 @@ COPY services/ /etc/systemd/system/
 COPY build/ build/
 USER root
 RUN systemctl disable auditd
+#google ops agent supports systemd_journald log collection
+#https://cloud.google.com/logging/docs/agent/ops-agent/configuration#logging-receivers
+RUN curl -sSO https://dl.google.com/cloudagents/add-google-cloud-ops-agent-repo.sh
+RUN bash add-google-cloud-ops-agent-repo.sh --also-install
+COPY config/google-ops-agent.yaml /etc/google-cloud-ops-agent/config.yaml
 #pmcd
 RUN systemctl enable pmcd pmlogger
 EXPOSE 44321

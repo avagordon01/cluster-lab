@@ -14,10 +14,4 @@ systemd slice instead of base-.service?
 slack notify script
 https://www.baeldung.com/linux/systemd-service-fail-notification#send-notifications-to-slack
 
-remote logging
-handled by cockpit? or install these
-systemd-journal-remote
-systemd-journal-gatewayd
-systemd-journal-upload
-
 summarise benefits of systemd and cockpit
