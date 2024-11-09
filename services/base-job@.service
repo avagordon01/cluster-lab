@@ -1,5 +1,5 @@
 [Container]
-Image=ghcr.io/avagordon01/farm:latest
+Image=ghcr.io/avagordon01/prod:latest
 Network=host
 AutoUpdate=registry
 

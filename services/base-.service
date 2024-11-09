@@ -1,11 +1,8 @@
 [Unit]
 OnFailure=notify-slack@%i.service
+StartLimitIntervalSec=30
+StartLimitBurst=2
 
 [Service]
 LimitCORE=infinity
-
-#MemoryMax=...
-#ManagedOOMMemoryPressure=kill
-#ManagedOOMMemoryPressureLimit=
-
-#ExtensionDirectories=/spare/local/pkg/lib
+Restart=on-failure
