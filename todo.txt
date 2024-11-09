@@ -1,11 +1,20 @@
-enable metrics pmlogger.service
-add cockpit cluster config
-enable dask scheduler & workers services
+fix metrics logging
+fix pmlogger.service
+enable pcp-zeroconf?
+
+fix cockpit cluster config
+hosts not automatically added from config file
+"client: Properly handle unknown SSH host keys"?
+https://github.com/cockpit-project/cockpit/releases?page=1
 
 use less sudo for systemctl
 use less sudo for podman
+rootless podman networking needs extra options
+https://wiki.archlinux.org/title/Podman#Networking
 
 example c++/python binaries
+use automatic directories env vars
+https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html#RuntimeDirectory=
 
 github CI actions for building & pushing images
 
