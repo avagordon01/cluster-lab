@@ -2,4 +2,4 @@
 
 set -ex
 
-sudo systemctl stop {control,farm,prod}@{0,1,2,3}.service
+sudo systemctl stop cluster.slice

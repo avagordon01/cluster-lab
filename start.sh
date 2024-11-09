@@ -2,4 +2,4 @@
 
 set -ex
 
-sudo systemctl start cluster.target
+sudo systemctl start cluster.slice
