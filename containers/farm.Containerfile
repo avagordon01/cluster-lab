@@ -1,5 +1,6 @@
 FROM base:latest
 USER root
+RUN tuned-adm profile network-throughput
 #RUN dnf -y install ...
 RUN systemctl enable podman-auto-update.timer
 RUN source $HOME/.local/bin/env && \
