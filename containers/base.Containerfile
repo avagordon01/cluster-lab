@@ -1,6 +1,7 @@
 FROM rockylinux:9
 
 RUN useradd -m -u 1000 -G wheel admin
+RUN useradd pcp
 RUN echo "root:pass" | chpasswd
 RUN echo "admin:pass" | chpasswd
 
@@ -8,6 +9,8 @@ USER root
 WORKDIR /root/
 RUN dnf -y update
 RUN dnf -y install systemd sudo openssh-clients openssh-server podman podman-plugins python3 bzip2 cockpit cockpit-pcp cockpit-system pcp-zeroconf
+#NOTE this is necessary to workaround a bug in pcp/pmlogger
+RUN chown -R pcp:pcp /var/log/pcp
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 RUN systemctl disable auditd
 #google ops agent supports systemd_journald log collection

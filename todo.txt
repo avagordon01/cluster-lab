@@ -1,7 +1,3 @@
-fix metrics logging
-fix pmlogger.service
-enable pcp-zeroconf?
-
 fix cockpit cluster config
 hosts not automatically added from config file
 "client: Properly handle unknown SSH host keys"?
