@@ -1,0 +1,8 @@
+[Unit]
+Description=podman clean timer
+
+[Timer]
+OnCalendar=sun 02:00:00
+
+[Install]
+WantedBy=timers.target

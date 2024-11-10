@@ -1,0 +1,6 @@
+[Unit]
+Description=podman clean service
+
+[Service]
+Type=oneshot
+ExecStart=/etc/systemd/systemd/podman-clean.sh
