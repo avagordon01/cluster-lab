@@ -3,8 +3,10 @@
 set -ex
 
 ./stop.sh
+sleep 2
 ./install.sh
 ./start.sh
+sleep 10
 ./configure.sh
 
 #dask
