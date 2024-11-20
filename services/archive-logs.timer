@@ -1,0 +1,9 @@
+[Unit]
+Description=archive logs to remote timer
+
+[Timer]
+OnCalendar=daily
+Unit=archive-logs.service
+
+[Install]
+WantedBy=timers.target

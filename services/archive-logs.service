@@ -1,0 +1,13 @@
+[Unit]
+Description=archive logs to remote
+After=storage.mount
+
+[Service]
+Type=oneshot
+ExecStart=cp /var/log/journal/*/*@* /storage/logs/
+#"merge" all archived (containing "@") log files into a single remote directory
+#the files are safe to "merge" because they contain both a machine-id field unique to each machine
+#and the machine hostname
+
+[Install]
+WantedBy=multi-user.target
