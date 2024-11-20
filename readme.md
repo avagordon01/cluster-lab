@@ -2,6 +2,14 @@
 
 this is a repo for my testing system/cluster management using systemd for everything
 
+## dependencies
+
+```
+sudo pacman -Syu systemd podman pulumi
+```
+
+## usage
+
 first run `./build.sh` to build containers and `./install.sh` to install systemd services
 
 run `./test.sh` to bring up the cluster, and open firefox with cockpit and dask dashboards
