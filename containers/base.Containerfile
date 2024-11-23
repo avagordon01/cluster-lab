@@ -1,5 +1,7 @@
 FROM rockylinux:9
 
+CMD ["/sbin/init"]
+
 RUN useradd -m -u 1000 -G wheel admin
 RUN useradd pcp
 RUN echo "root:pass" | chpasswd

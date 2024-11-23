@@ -1,4 +1,4 @@
 FROM base:latest
 USER root
-RUN tuned-adm profile network-latency
-CMD ["/sbin/init"]
+#TODO
+#RUN tuned-adm profile network-latency

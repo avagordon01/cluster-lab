@@ -1,6 +1,7 @@
 FROM base:latest
 USER root
-RUN tuned-adm profile network-throughput
+#TODO
+#RUN tuned-adm profile network-throughput
 #RUN dnf -y install ...
 RUN systemctl enable podman-auto-update.timer
 RUN source $HOME/.local/bin/env && \
@@ -10,4 +11,3 @@ RUN source $HOME/.local/bin/env && \
 #dask
 RUN systemctl enable dask-worker.service dask-scheduler.service
 EXPOSE 8786 8787
-CMD ["/sbin/init"]

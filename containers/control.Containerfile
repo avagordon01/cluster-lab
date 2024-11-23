@@ -4,4 +4,3 @@ RUN dnf -y install nginx cockpit-ws
 #cockpit
 RUN systemctl enable cockpit.socket
 EXPOSE 9090
-CMD ["/sbin/init"]
