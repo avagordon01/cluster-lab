@@ -1,8 +1,0 @@
-logging:
-  receivers:
-    systemd_journald:
-      type: systemd_journald
-  service:
-    pipelines:
-      default_pipeline:
-        receivers: [syslog, systemd_journald]

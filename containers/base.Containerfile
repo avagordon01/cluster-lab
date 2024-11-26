@@ -17,11 +17,6 @@ RUN systemctl enable tuned
 RUN chown -R pcp:pcp /var/log/pcp
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 RUN systemctl disable auditd
-#google ops agent supports systemd_journald log collection
-#https://cloud.google.com/logging/docs/agent/ops-agent/configuration#logging-receivers
-RUN curl -sSO https://dl.google.com/cloudagents/add-google-cloud-ops-agent-repo.sh
-RUN bash add-google-cloud-ops-agent-repo.sh --also-install
-COPY config/google-ops-agent.yaml /etc/google-cloud-ops-agent/config.yaml
 #pmcd
 EXPOSE 44321
 #sshd
