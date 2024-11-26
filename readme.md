@@ -4,21 +4,38 @@ this is a repo for my testing system/cluster management using systemd for everyt
 
 ## dependencies
 
+### local systemd cluster
+
 ```
-sudo pacman -Syu systemd podman pulumi
+sudo pacman -Syu systemd podman
 ```
 
-## usage - local systemd cluster
+### remote pulumi cluster
 
-first run `./build.sh` to build containers and `./cluster-systemd/scripts/install.sh` to install systemd services
+- [gcloud cli](https://cloud.google.com/sdk/docs/install)
+- pulumi
+  ```
+  uv pip install pulumi pulumi-gcp
+  ```
 
-run `./cluster-systemd/scripts/test.sh` to bring up the cluster, and open firefox with cockpit and dask dashboards
+## usage
+
+### local systemd cluster
+
+first run `./build.sh` to build containers then
+```
+./cluster-systemd/scripts/test.sh
+```
+to bring up the cluster, and open firefox with cockpit and dask dashboards
 
 submit python tasks to dask:
 ```
 #TODO
 ```
 
-## usage - remote pulumi cluster
+### remote pulumi cluster
 
-TODO
+```
+./cluster-pulumi/scripts/first-run.sh
+./cluster-pulumi/scripts/test.sh
+```
