@@ -2,12 +2,12 @@
 
 set -ex
 
-./stop.sh
+./cluster-systemd/scripts/stop.sh
 sleep 2
-./install.sh
-./start.sh
+./cluster-systemd/scripts/install.sh
+./cluster-systemd/scripts/start.sh
 sleep 10
-./configure.sh
+./cluster-systemd/scripts/configure.sh
 
 #dask
 farm_0_ip=$(sudo podman inspect systemd-farm_0 | jq --raw-output '.[0].NetworkSettings.Networks."systemd-cluster".IPAddress')
@@ -17,5 +17,5 @@ firefox "${farm_0_ip}:8787"
 control_ip=$(sudo podman inspect systemd-control_0 | jq --raw-output '.[0].NetworkSettings.Networks."systemd-cluster".IPAddress')
 firefox "${control_ip}:9090"
 
-./podshell.sh
+./cluster-systemd/scripts/podshell.sh
 exit

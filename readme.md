@@ -8,15 +8,17 @@ this is a repo for my testing system/cluster management using systemd for everyt
 sudo pacman -Syu systemd podman pulumi
 ```
 
-## usage
+## usage - local systemd cluster
 
-first run `./build.sh` to build containers and `./install.sh` to install systemd services
+first run `./build.sh` to build containers and `./cluster-systemd/scripts/install.sh` to install systemd services
 
-run `./test.sh` to bring up the cluster, and open firefox with cockpit and dask dashboards
+run `./cluster-systemd/scripts/test.sh` to bring up the cluster, and open firefox with cockpit and dask dashboards
 
 submit python tasks to dask:
 ```
 #TODO
 ```
 
-in a real world deployment, cluster/* would be some terraform instead
+## usage - remote pulumi cluster
+
+TODO
