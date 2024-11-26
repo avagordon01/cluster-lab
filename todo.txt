@@ -1,7 +1,16 @@
-use less sudo for systemctl
-use less sudo for podman
-rootless podman networking needs extra options
-https://wiki.archlinux.org/title/Podman#Networking
+test memory, network accounting display in cockpit
+install services/user.conf
+
+test log archiving to s3 and journalctl -D /storage/logs
+
+test postgresql with a python script in a systemd service
+generic database
+    cloud managed/hosted postgres
+
+rootless podman is a pain
+    networking needs extra options
+    https://wiki.archlinux.org/title/Podman#Networking
+    doesn't work because systemd can't run as init (pid 1) in rootless containers
 
 example c++/python binaries
 use automatic directories env vars
