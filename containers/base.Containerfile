@@ -9,8 +9,9 @@ RUN echo "admin:pass" | chpasswd
 
 USER root
 WORKDIR /root/
-RUN dnf -y update
-RUN dnf -y install systemd sudo openssh-clients openssh-server podman podman-plugins python3 bzip2 cockpit cockpit-pcp cockpit-system pcp-zeroconf tuned unzip
+RUN dnf -y update && \
+    dnf -y install systemd sudo openssh-clients openssh-server podman podman-plugins python3 bzip2 cockpit cockpit-pcp cockpit-system pcp-zeroconf tuned unzip && \
+    dnf clean all
 RUN systemctl enable tuned
 #NOTE this is necessary to workaround a bug in pcp/pmlogger
 RUN chown -R pcp:pcp /var/log/pcp
