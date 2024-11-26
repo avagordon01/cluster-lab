@@ -6,7 +6,7 @@ After=syslog.target network.target
 WantedBy=multi-user.target
 
 [Service]
-Type=simple
+Type=exec
 ExecStart=dask worker \
     --pid-file=worker.pid \
     tcp://farm-0:8786

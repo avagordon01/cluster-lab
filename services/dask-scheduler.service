@@ -7,7 +7,7 @@ ConditionHost=farm-0
 WantedBy=multi-user.target
 
 [Service]
-Type=simple
+Type=exec
 ExecStart=dask scheduler \
     --pid-file=scheduler.pid
 ExecStop=/bin/kill `/bin/cat scheduler.pid`
