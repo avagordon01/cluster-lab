@@ -1,8 +1,0 @@
-[Container]
-Image="localhost/%j:latest"
-HostName="%j-%i"
-Network=cluster.network
-NetworkAlias=%j
-
-[Unit]
-PartOf=cluster.slice

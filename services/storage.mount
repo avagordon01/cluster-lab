@@ -4,7 +4,7 @@ Description=rclone mount for /storage
 [Mount]
 Type=rclone
 #What=sftp1:subdir
-What=gs://storage
+What=gs://ag-md-storage
 Where=/storage
 Options=rw,_netdev,allow_other,args2env,vfs-cache-mode=writes,config=/etc/rclone.conf,cache-dir=/var/rclone
 

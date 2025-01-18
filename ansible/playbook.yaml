@@ -1,0 +1,68 @@
+- hosts: all
+  tasks:
+   - ansible.builtin.dnf:
+       name:
+         - systemd
+         - sudo
+         - openssh-clients
+         - openssh-server
+         - rclone
+         - podman
+         - podman-plugins
+         - python3
+         - bzip2
+         - cockpit
+         - cockpit-pcp
+         - cockpit-system
+         - pcp-zeroconf
+         - tuned
+         - unzip
+       state: latest
+   - name: enable tuned
+     ansible.builtin.systemd:
+       name: tuned
+       state: started
+       enabled: true
+   - name: enable sshd
+     ansible.builtin.systemd:
+       name: sshd
+       state: started
+       enabled: true
+   - name: configure rclone
+     ansible.builtin.copy:
+       src: config/rclone.conf
+       dest: /etc/
+   - name: install admin services
+     ansible.builtin.copy:
+       src: services/*
+       dest: /usr/local/lib/systemd/system
+   - name: enable/start rclone storage mount service
+     ansible.builtin.systemd:
+       name: storage.mount
+       state: started
+       enabled: true
+       daemon_reload: true
+
+- hosts: dev
+  tasks:
+   - name: install uv
+     ansible.builtin.shell: curl -LsSf https://astral.sh/uv/install.sh | sh
+   - name: install micromamba
+     ansible.builtin.shell: curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+
+- hosts: trade
+  tasks:
+   - name: set tuned network latency profile
+     ansible.builtin.command: tuned-adm profile network-latency
+
+- hosts: control
+  tasks:
+   - name: install latest cockpit-ws
+     ansible.builtin.dnf:
+       name: cockpit-ws
+       state: latest
+   - name: enable cockpit
+     ansible.builtin.systemd:
+       name: cockpit.socket
+       state: started
+       enabled: true

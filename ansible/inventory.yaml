@@ -1,0 +1,7 @@
+control:
+  hosts:
+    control.ag-trading.com:
+trade:
+  hosts:
+    cme.trade.ag-trading.com:
+    ice.trade.ag-trading.com:

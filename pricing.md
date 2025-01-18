@@ -1,9 +1,8 @@
 # pricing
 
 - github (including actions and gchr.io) is free for public repos/images
-- pulumi has 500 deployment minutes free
-  use pulumi self managed state in gcp to avoid paying 
-  https://www.pulumi.com/docs/iac/concepts/state-and-backends/#google-cloud-storage
+- terraform
+  - commit the tfstate in the repo
 - gcp
   - buckets ~$1-10/month https://cloud.google.com/storage/pricing-examples
     free tier in us-east1

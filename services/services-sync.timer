@@ -1,0 +1,9 @@
+[Unit]
+Description=sync git systemd services repo and reload services
+
+[Timer]
+OnCalendar=minutely
+Unit=services-sync.service
+
+[Install]
+WantedBy=timers.target

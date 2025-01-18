@@ -1,3 +1,51 @@
+db = terraform cloud managed postgres
+cluster = terraform cloud managed airflow (using base image)
+dev = terraform + ansible (as close to base image as possible)
+control = ansible + systemd sync (running systemd containers using base image)
+trade = ansible + systemd sync (running systemd containers using base image)
+
+base image = dockerfile based on rocky
+    built using bazel or equiv, not a dockerfile
+    bazel rules_docker / rules_oci
+    system dependencies, pip, conda, etc
+    built c++ binaries
+    python module
+
+airflow (or AWS MWAA / GCP Cloud Composer managed version) for dynamic jobs
+    - slack notifications for failures
+    - bucket (GCS) logging
+    - UI https://airflow.apache.org/docs/apache-airflow/stable/ui.html#gantt-chart
+    - bash operator
+    - python operator
+    - sql query operator https://airflow.apache.org/docs/apache-airflow-providers-common-sql/stable/operators.html#execute-sql-query
+    - upload to GCS operator https://airflow.apache.org/docs/apache-airflow-providers-google/stable/operators/transfer/local_to_gcs.html#localfilesystemtogcsoperator
+    - kubernetespodoperator
+    - bucket object existence sensor https://airflow.apache.org/docs/apache-airflow-providers-google/stable/_api/airflow/providers/google/cloud/sensors/gcs/index.html#airflow.providers.google.cloud.sensors.gcs.GCSObjectExistenceSensor
+    - postgres connector https://airflow.apache.org/docs/apache-airflow-providers-postgres/stable/index.html
+    - local debugging https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/debug.html
+    - use pythonbranchoperator to implement caching (if cache-key exists, return cache-value, else execute task)
+systemd for everything else
+
+git systemd sync:
+    git sync every minute
+    re-create the systemd administrator service directory
+    each host-type has their own cluster directory
+    e.g. trade/*, control/*, trade/cme/*
+    do daemon-reload
+terraform instead of pulumi
+    easier cloud integration
+    managed offering
+    or just commit the statefile
+
+cockpit scalability
+    "cockpit is not meant for fleet management, dashboard was limited to ~20 machines"
+    https://github.com/cockpit-project/cockpit/discussions/18281#discussioncomment-4955279
+
+    coreos/fleet "scalability limitations ... it is not recommended to run fleet clusters larger than 100 nodes or with more than 1000 services"
+    https://github.com/coreos/fleet?tab=readme-ov-file#current-status
+
+    fine for a static cluster of ~10 machines
+
 test memory, network accounting display in cockpit
 install services/user.conf
 
@@ -24,3 +72,6 @@ slack notify script
 https://www.baeldung.com/linux/systemd-service-fail-notification#send-notifications-to-slack
 
 summarise benefits of systemd and cockpit
+
+add example airflow jobs that read/write market data parquet files to buckets
+add example research job doing some learning / optimisation
