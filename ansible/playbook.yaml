@@ -46,9 +46,11 @@
 - hosts: dev
   tasks:
    - name: install uv
-     ansible.builtin.shell: curl -LsSf https://astral.sh/uv/install.sh | sh
+     ansible.builtin.shell: curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR="/usr/local/bin" sh
    - name: install micromamba
-     ansible.builtin.shell: curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+     ansible.builtin.shell: curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba --strip-components=1
+     args:
+       chdir: /usr/local/bin/
 
 - hosts: trade
   tasks:
